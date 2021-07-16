@@ -5,16 +5,14 @@ from Spritesheet import Spritesheet
 
 
 pygame.init()
+
+# Setup the clock for a decent framerate
+
+clock = pygame.time.Clock()
+
 screen = pygame.display.set_mode((500, 500))
 
-'''#load sprite sheet
-N = 6; width = 50; height = 50; x_offset = 0
-self.images = []
-walk_all = pygame.image.load('sprites/sean_sheet.png')
-for n in range(N):
-    surf = pygame.Surface((width, height))
-    surf.blit(walk_all, (0, 0), (x_offset+n*width, 0, width, height))
-    self.images.append(surf)'''
+
 
 
 class Character(pygame.sprite.Sprite):
@@ -71,7 +69,7 @@ class Character3(Spritesheet):
 		self.debug = True
 		self.loadAnimation(500, 200, 100, 100)
 		self.playAnimation()
-		self.animationLength = 1
+
 
 
 
@@ -113,3 +111,5 @@ while not done:
 			sprite.update()
         
 		pygame.display.flip()
+
+		clock.tick(0)

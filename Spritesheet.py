@@ -40,7 +40,7 @@ class Spritesheet(pygame.sprite.Sprite):
 
 	def loadAnimation(self, sheetWidth, sheetHeight, cellWidth, cellHeight):
 		self.animation = True
-		self.animationLength = 30
+		self.animationLength = 10
 		self.animationState = 0
 		self.animCellWidth = cellWidth
 		self.animCellHeight = cellHeight
@@ -61,19 +61,20 @@ class Spritesheet(pygame.sprite.Sprite):
 		
 		self.sheet = [[None] * self.vAnimations] * self.hAnimations
 
-		# go through columns and rows
+		'''# go through columns and rows
 		for i in range(0, self.vAnimations):
 			for j in range(0, self.hAnimations):
 				
-				jPix = j * self.animCellWidth
+				'''jPix = j * self.animCellWidth
 				iPix = i * self.animCellHeight
 				if self.debug == True:					
 					print("I:"+ str(i))				
 					print("J:" + str(j))
 					print("J pix:", jPix )
-					print("I pix:", iPix )	
+					print("I pix:", iPix )'''	
 				self.sheet[j][i] = pygame.Surface((self.animCellWidth, self.animCellHeight), pygame.SRCALPHA)
-				self.sheet[j][i].blit(self.src, (0, 0), (j * self.animCellWidth, i * self.animCellHeight, self.animCellWidth, self.animCellHeight))
+				#print("jpix", jPix)
+				self.sheet[j][i].blit(self.src, (0, 0), (j * self.animCellWidth, i * self.animCellHeight, self.animCellWidth, self.animCellHeight))'''
 
 		self.image = self.sheet[0][0]
 
@@ -101,7 +102,8 @@ class Spritesheet(pygame.sprite.Sprite):
 						print("Reset")
 					self.animationCell = 0		
 				print("Changing!", self.animationCell, self.animationState)
-				self.image = self.sheet[self.animationCell][self.animationState]
+				self.image = pygame.Surface((self.animCellWidth, self.animCellHeight), pygame.SRCALPHA)
+				self.image.blit(self.src, (0,0), (self.animationCell * self.animCellWidth, self.animCellHeight*self.animationState, self.animCellWidth, self.animCellHeight))
 				self.timer = 0
 
 	# setCurrentCycle(cycleState) – Changes the animation cycle to the one indicated by the number. 
