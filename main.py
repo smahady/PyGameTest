@@ -186,11 +186,11 @@ class Character(Spritesheet):
 	def __init__(self, game, sprite, x, y):
 		# Call the parent class (Sprite) constructor
 		super().__init__(game, sprite,x, y)
-		self.debug = False
-		self.loadAnimation(500, 200, 100, 100)
 		self.stateTimer = 0
 		self.dy = 7
 		self.state = States.FALLING
+		self.game = game
+		self.rect = (0,0,self.animCellWidth/2, self.animCellHeight/2)
 
 	def update(self, offsetX = 0, offsetY = 0):
 		if self.state == States.FALLING:
