@@ -565,6 +565,25 @@ class Window(Tk):
 		self.game.main = Anthony(self.game)
 		self.destroy()
 
+	def Alex(self):
+		self.game.main = Alex(self.game)
+		self.destroy()	
+
+	def Justin(self):Justin(self.game)
+		self.destroy()		
+
+	def Siqi(self):
+		self.game.main = Siqi(self.game)
+		self.destroy()	
+
+	def Qingyun(self):
+		self.game.main = Qingyun(self.game)
+		self.destroy()
+
+	def Lucas(self):
+		self.game.main = Lucas(self.game)
+		self.destroy()						
+
 
 class Game:
 	def __init__(self):
