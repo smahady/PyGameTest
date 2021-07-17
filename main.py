@@ -106,9 +106,9 @@ class Character(Spritesheet):
 			elif self.game.keysDown[Keys.K_RIGHT] or self.game.keysDown[Keys.K_LEFT]:
 				self.walkBehavior()
 			elif self.state == States.WALK:
-				if (self.facing == Facing.RIGHT) and (self.game.keysDown[Keys.K_RIGHT] == None):
+				if (self.facing == Facing.RIGHT) and (self.game.keysDown[Keys.K_RIGHT] == False):
 					self.standBehavior()
-				if (self.facing == Facing.LEFT) and (self.game.keysDown[Keys.K_LEFT] == None):
+				if (self.facing == Facing.LEFT) and (self.game.keysDown[Keys.K_LEFT] == False):
 					self.standBehavior()
 		elif self.state == States.JUMP:
 			self.stateTimer = self.stateTimer - 1
@@ -207,6 +207,7 @@ class Game:
 		self.sprites = pygame.sprite.Group()
 		self.sprites.add(self.main)
 		self.sprites.add(self.ground)
+		self.sprites.add(self.spaceship)
 
 		self.groundedSprites = pygame.sprite.Group()
 		self.groundedSprites.add(self.main)
@@ -225,10 +226,12 @@ class Game:
 			self.keysDown[Keys.K_LEFT] = True
 		else:
 			self.keysDown[Keys.K_LEFT] = False
+
 		if keys[pygame.K_RIGHT]:
 			self.keysDown[Keys.K_RIGHT] = True
 		else:
-			self.keysDown[Keys.K_RIGHT] = False			
+			self.keysDown[Keys.K_RIGHT] = False	
+
 		if keys[pygame.K_SPACE]:
 			self.keysDown[Keys.K_SPACE] = True
 		else:
