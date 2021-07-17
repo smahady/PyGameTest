@@ -117,7 +117,6 @@ class Spritesheet(pygame.sprite.Sprite):
 					if self.debug == True:
 						print("Reset")
 					self.animationCell = 0		
-				print("Changing!", self.animationCell, self.animationState)
 				self.image = pygame.Surface((self.animCellWidth, self.animCellHeight), pygame.SRCALPHA)
 				self.image.blit(self.src, (0,0), (self.animationCell * self.animCellWidth, self.animCellHeight*self.animationState, self.animCellWidth, self.animCellHeight))
 				self.timer = 0
