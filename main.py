@@ -219,24 +219,21 @@ class Game:
 			self.boardKeysDown[i] = False
 
 	# check events
-	def keyPressEvent(self, key):
+	def keyPressEvent(self, keys):
 		print ("key down")
-		if key == pygame.K_LEFT:
+		if keys[pygame.K_LEFT]:
 			self.keysDown[Keys.K_LEFT] = True
-		elif key == pygame.K_RIGHT:
-			self.keysDown[Keys.K_RIGHT] = True
-		elif key == pygame.K_SPACE:
-			self.keysDown[Keys.K_SPACE] = True			
-
-	# lift keys not down
-	def keyReleaseEvent(self, key):
-		print("keyup")
-		if key == pygame.K_LEFT:
+		else:
 			self.keysDown[Keys.K_LEFT] = False
-		elif key == pygame.K_RIGHT:
-			self.keysDown[Keys.K_RIGHT] = False
-		elif key == pygame.K_SPACE:
+		if keys[pygame.K_RIGHT]:
+			self.keysDown[Keys.K_RIGHT] = True
+		else:
+			self.keysDown[Keys.K_RIGHT] = False			
+		if keys[pygame.K_SPACE]:
+			self.keysDown[Keys.K_SPACE] = True
+		else:
 			self.keysDown[Keys.K_SPACE] = False
+
 
 	# execute our main loop
 	def run(self):
@@ -246,10 +243,10 @@ class Game:
 			for event in pygame.event.get():
 				if event.type == pygame.QUIT:
 					done = True
-				elif event.type == pygame.KEYDOWN:
-					self.keyPressEvent(event.key)
-				elif event.type == pygame.KEYUP:
-					self.keyReleaseEvent(event.key)
+
+
+				keys = pygame.key.get_pressed()  #checking pressed keys
+				self.keyPressEvent(keys)
 
 				# Add this somewhere after the event pumping and before the display.flip()
 				pygame.draw.rect(self.screen, (0, 128, 255), pygame.Rect(30, 30, 60, 60))
