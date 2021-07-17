@@ -84,7 +84,7 @@ class Spaceship(Spritesheet):
 		elif temp ==2:
 			newEnemy = FlyingEnemy(self.game, self.posX, self.posY)
 		self.enemies.append(newEnemy)
-		self.sprites.add(newEnemy)
+		self.game.sprites.add(newEnemy)
 
 # Abstract base class - a base class we intend to inherit in another class
 class BaseEnemy(Spritesheet):
