@@ -85,7 +85,7 @@ class Spaceship(Spritesheet):
 		self.enemies.append(newEnemy)
 
 # Abstract base class - a base class we intend to inherit in another class
-class BaseEnemy(Sprite):
+class BaseEnemy(Spritesheet):
 	def __init__(self, thisScene, file, width, height, x, y):
 		super().__init__(thisScene, file, width, height)
 		self.setBoundAction(Scene.DIE)
