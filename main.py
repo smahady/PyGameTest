@@ -57,7 +57,7 @@ class Spaceship(Spritesheet):
 		self.timer = 60
 		self.enemies = []
 
-	def checkBounds(self):
+	def update(self):
 
 		if self.drawX < 0:
 			self.dx = 6
