@@ -550,7 +550,7 @@ class Window(Tk):
 
 		seanButton = Button(self, text="Sean", command=self.Sean)
 		seanButton.pack()
-		anthonyButton = Button(self, text="Sean", command=self.Sean)
+		anthonyButton = Button(self, text="Anthony", command=self.Anthony)
 		anthonyButton.pack()
 		self.mainloop()
 
