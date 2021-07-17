@@ -89,7 +89,6 @@ class Spaceship(Spritesheet):
 class BaseEnemy(Spritesheet):
 	def __init__(self, thisScene, file, width, height, x, y):
 		super().__init__(thisScene, file, width, height)
-		self.setBoundAction(Scene.DIE)
 		self.x = x
 		self.y = y
 		self.dy = 3
