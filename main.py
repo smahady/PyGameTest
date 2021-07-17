@@ -474,8 +474,8 @@ class Lucas(Character):
 		self.playAnimation()
 
 
-		self.dy= 1
-		self.dx= 1
+		self.dy= 250
+		self.dx= 250
 
 	def walkBehavior(self):
 		if self.game.keysDown[Keys.K_RIGHT]:
