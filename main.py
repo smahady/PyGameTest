@@ -254,11 +254,10 @@ class Game:
 
 
 
-			self.ground.update(self.offsetX, self.offsetY)
-			self.spaceship.update(self.offsetX, self.offsetY)
+
 
 			for sprite in self.sprites:
-				sprite.update()
+				sprite.update(self.offsetX, self.offsetY)
 
 			self.camera.update()
 
