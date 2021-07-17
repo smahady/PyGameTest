@@ -265,21 +265,7 @@ class Sean(Character):
 		self.dy = -4	
 		self.state = States.JUMP
 
-class Window(Tk):
-	def __init__(self, game):
-		self.main = "None"
-		super().__init__()
-		self.game = game
-		self.geometry('600x600')
 
-
-		seanButton = Button(self, text="NinjaCat", command=self.Sean)
-		seanButton.pack()
-		self.mainloop()
-
-	def Sean(self):
-		self.game.main = Sean(self.game)
-		self.destroy()
 
 # Sheet 1024x168
 # Cell:128x84
@@ -554,8 +540,27 @@ class Anthony(Character):
 
 
 
-		
+class Window(Tk):
+	def __init__(self, game):
+		self.main = "None"
+		super().__init__()
+		self.game = game
+		self.geometry('600x600')
 
+
+		seanButton = Button(self, text="Sean", command=self.Sean)
+		seanButton.pack()
+		anthonyButton = Button(self, text="Sean", command=self.Sean)
+		anthonyButton.pack()
+		self.mainloop()
+
+	def Sean(self):
+		self.game.main = Sean(self.game)
+		self.destroy()		
+
+	def Anthony(self):
+		self.game.main = Anthony(self.game)
+		self.destroy()
 
 
 class Game:
