@@ -122,7 +122,7 @@ class GroundEnemy(BaseEnemy):
 				self.state = States.STAND
 				self.dy = 0	
 	def makeDecision(self):
-		self.stateTimer = 100
+		self.timer = 100
 		if self.state == States.STAND:
 			decision = random.randint(0,1)
 			if decision == 0:
