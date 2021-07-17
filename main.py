@@ -389,7 +389,14 @@ class Game:
 			self.camera.update()
 
 
+
+
 			self.sprites.draw(self.screen)
+
+			for enemy in self.spaceship.enemies:
+				if enemy.rect.colliderect(self.main):
+					print("You died!")
+					self.stop()
        
 			pygame.display.flip()
 
