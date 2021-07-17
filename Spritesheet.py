@@ -48,6 +48,7 @@ class Spritesheet(pygame.sprite.Sprite):
 	def changeImage(self, imageFile):
 		self.image = pygame.image.load(imageFile)
 		self.src = pygame.transform.scale(self.image, (self.width, self.height))
+		self.image = self.src
 
 	def setAnimationSpeed(self, speed):
 		self.animationLength = speed
