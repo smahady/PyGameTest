@@ -190,7 +190,10 @@ class Character(Spritesheet):
 		self.dy = 7
 		self.state = States.FALLING
 		self.game = game
+
+	def prepare(self):
 		self.rect = (0,0,self.animCellWidth/2, self.animCellHeight/2)
+		
 
 	def update(self, offsetX = 0, offsetY = 0):
 		if self.state == States.FALLING:
@@ -238,7 +241,7 @@ class Sean(Character):
 		self.loadAnimation(500, 200, 100, 100) 	# divides the sprite sheet into pieces
 		self.setAnimationSpeed(10)	#sets a QTimer to 100ms
 		self.playAnimation()	#starts the QTimer
-		self.game = game
+		self.prepare()
 
 		#make a state for you class
 		self.state = States.FALLING	#falling
