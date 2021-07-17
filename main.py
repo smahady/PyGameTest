@@ -192,7 +192,7 @@ class Character(Spritesheet):
 		self.game = game
 
 	def prepare(self):
-		self.rect = (0,0,self.animCellWidth/2, self.animCellHeight/2)
+		self.rect = pygame.Rect(0,0,self.animCellWidth/2, self.animCellHeight/2)
 		
 
 	def update(self, offsetX = 0, offsetY = 0):
