@@ -3,6 +3,7 @@ from Background import Background
 from Spritesheet import Spritesheet
 from Ground import Ground
 from enum import Enum
+from tkinter import Tk, Button, Label
 
 class States(Enum):
 	FALLING = 0
@@ -163,9 +164,32 @@ class Sean(Character):
 		self.dy = -4	
 		self.state = States.JUMP
 
+class Window(Tk):
+	def __init__(self, game):
+		self.main = "None"
+		super().__init__()
+		self.game = game
+		self.geometry('600x600')
+
+
+		seanButton = Button(self, text="NinjaCat", command=self.Sean)
+		seanButton.pack()
+		self.mainloop()
+
+	def Sean(self):
+		self.game.main = Sean(self.game)
+		self.destroy()
+
+
+
 
 class Game:
 	def __init__(self):
+		select = Window(self)
+
+		if self.main == "None":
+			raise ValueError('Selection Error.')
+		
 		pygame.init()
 
 		# Setup the clock for a decent framerate
@@ -189,7 +213,7 @@ class Game:
 		self.bg3 = Background(self, "sprites/parallax-forest-lights.png", 1020, 600, 1, 0)		
 		self.ground = Ground(self)
 
-		self.main = Sean(self)
+		
 
 
 
