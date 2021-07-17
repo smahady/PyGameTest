@@ -232,7 +232,7 @@ class Character(Spritesheet):
 # 50, 50
 class Sean(Character):
 	def __init__(self, game):
-		super().__init__(game, "sprites/sean_sheet.png", 250, 100)
+		super().__init__(game, "sprites/sean_sheet.png", 500, 200)
 		self.posX = 75	
 		self.posY = 100
 		self.loadAnimation(500, 200, 100, 100) 	# divides the sprite sheet into pieces
