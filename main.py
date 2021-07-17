@@ -190,9 +190,6 @@ class Character(Spritesheet):
 		self.dy = 7
 		self.state = States.FALLING
 		self.game = game
-
-	def prepare(self):
-		self.rect = pygame.Rect(0,0,self.animCellWidth*.75, self.animCellHeight*.75)
 		
 
 	def update(self, offsetX = 0, offsetY = 0):
@@ -241,7 +238,6 @@ class Sean(Character):
 		self.loadAnimation(500, 200, 100, 100) 	# divides the sprite sheet into pieces
 		self.setAnimationSpeed(10)	#sets a QTimer to 100ms
 		self.playAnimation()	#starts the QTimer
-		self.prepare()
 
 		#make a state for you class
 		self.state = States.FALLING	#falling
@@ -397,7 +393,7 @@ class Game:
 			self.sprites.draw(self.screen)
 
 			for enemy in self.spaceship.enemies:
-				if enemy.rect.colliderect(self.main):
+				if pygame.sprite.collide_ratio(0.5)(enemy,self.main):
 					print("You died!")
 					done = True
        
