@@ -393,7 +393,7 @@ class Game:
 			self.sprites.draw(self.screen)
 
 			for enemy in self.spaceship.enemies:
-				if pygame.sprite.collide_circle_ratio(0.5)(enemy,self.main):
+				if pygame.sprite.collide_circle_ratio(0.4)(enemy,self.main):
 					print("You died!")
 					done = True
        
