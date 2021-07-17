@@ -243,8 +243,8 @@ class Sean(Character):
 		self.state = States.FALLING	#falling
 
 	# Add a method called walkBehavior. 
-	# This should check if self.scene.keysDown[Scene.K_RIGHT]is True. If so self.facing to 0, self.setCurrentCycle to 0, call the self.playAnimation method. Set the DX to a value between 0 and 10. Set a State to States.WALK
-	# If not check if self.scene.keysDown[Scene.K_LEFT] is True. If so self.facing to 1, self.setCurrentCycle to 1, call the self.playAnimation method. Set the DX to a value between 0 and -10. Set a State to States.WALK
+	# This should check if self.game.keysDown[Keys.K_RIGHT]is True. If so self.facing to 0, self.setCurrentCycle to 0, call the self.playAnimation method. Set the DX to a value between 0 and 10. Set a State to States.WALK
+	# If not check if self.game.keysDown[Keys.K_LEFT] is True. If so self.facing to 1, self.setCurrentCycle to 1, call the self.playAnimation method. Set the DX to a value between 0 and -10. Set a State to States.WALK
 	def walkBehavior(self):
 		if self.game.keysDown[Keys.K_RIGHT]:
 			self.facing = 0
@@ -281,6 +281,280 @@ class Window(Tk):
 		self.game.main = Sean(self.game)
 		self.destroy()
 
+# Sheet 1024x168
+# Cell:128x84
+# super().__init__(thisScene, "yourimage.png", sheetX, sheetY)
+# loadAnimation(sheetX, sheetY, CellX, cellY)
+class Justin(Character):
+    def __init__(self, thisScene):
+        super().__init__(thisScene, "sprites/justin_sheet.png", 1024, 168)
+        self.x = 100
+        self.y = 100
+        self.dx = 2
+        self.dy = 2
+        self.loadAnimation(1024, 168, 128, 84)
+        self.generateAnimationCycles()
+        self.setAnimationSpeed(30)
+        self.playAnimation()
+    def walkBehavior(self):
+      if self.game.keysDown[Keys.K_RIGHT]:
+        self.facing = Facing.RIGHT
+        self.setCurrentCycle(Facing.RIGHT)
+        self.playAnimation()
+        self.dx = 3
+        self.state = States.WALK
+      elif self.game.keysDown[Keys.K_LEFT]:
+        self.facing = Facing.LEFT
+        self.setCurrentCycle(Facing.LEFT)
+        self.playAnimation()
+        self.dx = -3
+        self.state = States.WALK
+    def jumpBehavior(self):
+      self.stateTimer = 50
+      self.dy = -10	
+      self.state = States.JUMP    
+
+
+
+
+
+# sheet: 	715 x 474
+# Cell : 143 x 237
+# super().__init__(thisScene, "yourimage.png", sheetX, sheetY)
+# loadAnimation(sheetX, sheetY, CellX, cellY)
+class Johnny(Character):
+	def __init__(self,thisScene):
+		super().__init__(thisScene,"sprites/johnny_sheet.png", 715, 474)#COPYRIGHT anthony: YEEET
+		self.x = 100
+		self.y = 100
+		self.dx = 1
+		self.dy = 1
+		print("Johnny")
+		self.loadAnimation(715, 474, 143, 237)
+		self.generateAnimationCycles()
+		self.setAnimationSpeed(30)	
+		self.playAnimation()
+
+	def walkBehavior(self):
+		if self.game.keysDown[Keys.K_RIGHT]:
+			self.facing = Facing.RIGHT
+			self.setCurrentCycle(Facing.RIGHT)
+			self.playAnimation()
+			self.dx = 1
+			self.state = States.WALK
+		elif self.game.keysDown[Keys.K_LEFT]:
+			self.facing = Facing.LEFT
+			self.setCurrentCycle(Facing.LEFT)
+			self.playAnimation()
+			self.dx = -1
+			self.state = States.WALK
+	def jumpBehavior(self):
+		self.stateTimer = 40
+		self.dy = -10	
+		self.state = States.JUMP
+
+
+
+	
+# Sheet: 495 x 180
+# Cell: 123 x 90
+# super().__init__(thisScene, "yourimage.png", sheetX, sheetY)
+# loadAnimation(sheetX, sheetY, CellX, cellY)
+class Siqi(Character):
+    def __init__(self,thisScene):
+        super().__init__(thisScene, "sprites/siqi_sheet.png",495,180) 
+        self.x=-100
+        self.y=-150
+        self.dx=2
+        self.dy=3
+        print("Siqi")
+        self.loadAnimation(495, 180, 123, 90)
+        self.generateAnimationCycles()
+        self.setAnimationSpeed(30)	
+        self.playAnimation()
+
+    def walkBehavior(self):
+      if self.game.keysDown[Keys.K_RIGHT]:
+        self.facing = Facing.RIGHT
+        self.setCurrentCycle(Facing.RIGHT)
+        self.playAnimation()
+        self.dx = 6
+        self.state = States.WALK
+      elif self.game.keysDown[Keys.K_LEFT]:
+        self.facing = Facing.LEFT
+        self.setCurrentCycle(Facing.LEFT)
+        self.playAnimation()
+        self.dx = -6
+        self.state=States.WALK
+    def jumpBehavior(self):
+      self.stateTimer = 50
+      self.dy = -5	
+      self.state = States.JUMP
+
+
+        
+
+# Sheet: 162 x 204
+# Cell: 81 x 102
+class Alex(Character):
+    def __init__(self,thisScene):
+        super().__init__(thisScene, "sprites/alex_sheet.png", 162, 204)
+        self.x = 110
+        self.y = 90
+        self.dx=2
+        self.dy=3
+        print("Alex")
+
+
+        self.loadAnimation(162, 204, 54, 102)
+        self.generateAnimationCycles()
+        self.setAnimationSpeed(30)
+        self.playAnimation()
+
+
+
+    def walkBehavior(self):
+      if self.game.keysDown[Keys.K_RIGHT]:
+        self.facing = Facing.RIGHT
+        self.setCurrentCycle(Facing.RIGHT)
+        self.playAnimation()
+        self.dx = 5
+        self.state = States.WALK
+      elif self.game.keysDown[Keys.K_LEFT]:
+        self.facing = Facing.LEFT
+        self.setCurrentCycle(Facing.LEFT)
+        self.playAnimation()
+        self.dx = -5
+        self.state = States.WALK
+
+    def jumpBehavior(self):
+      self.stateTimer = 60
+      self.dy = -6  
+      self.state=States.JUMP
+      
+         
+
+
+# 50 x 50
+# Sheet: 630x220
+# Cell: 126x110
+class Qingyun(Character):
+    def __init__(self, thisScene):
+        super().__init__(thisScene, "sprites/qingyun_sheet.png", 630, 220)	#make sure to pass thisScene, the path to your image, and the size
+        self.x = 200
+        self.y = 50
+        self.dx = 5
+        self.dy = 5
+        self.loadAnimation(630, 220, 126, 110)
+        self.generateAnimationCycles()
+        self.setAnimationSpeed(30)
+        self.playAnimation()
+
+
+
+
+    def walkBehavior(self):
+      if self.game.keysDown[Keys.K_RIGHT]:
+        self.facing = Facing.RIGHT
+        self.setCurrentCycle(Facing.RIGHT)
+        self.dx = 5
+        self.playAnimation()
+        self.state = States.WALK
+      elif self.game.keysDown[Keys.K_LEFT]:
+        self.facing = Facing.LEFT
+        self.setCurrentCycle(Facing.LEFT)
+        self.playAnimation()
+        self.dx = -5
+        self.state = States.WALK
+    def jumpBehavior(self):
+      self.stateTimer = 60
+      self.dy = -6
+      self.state = States.JUMP			
+          
+        
+
+
+
+# 
+# 42x30
+# Lucas
+# Sheet: 992x240
+# Cell: 165x120
+# super().__init__(thisScene, "yourimage.png", sheetX, sheetY)
+# loadAnimation(sheetX, sheetY, CellX, cellY)
+class Lucas(Character):
+	def __init__(self,thisScene):
+		super().__init__(thisScene,"sprites/lucas_sheet.png", 992,240)
+		self.x = 100
+		self.y = 100
+		self.loadAnimation(992, 240, 165, 120)
+		self.generateAnimationCycles()
+		self.setAnimationSpeed(100)	
+		self.playAnimation()
+
+
+		self.dy= 1
+		self.dx= 1
+
+	def walkBehavior(self):
+		if self.game.keysDown[Keys.K_RIGHT]:
+			self.facing = Facing.RIGHT
+			self.setCurrentCycle(Facing.RIGHT)
+			self.playAnimation()
+			self.dx = 6
+			self.state = States.WALK
+		elif self.game.keysDown[Keys.K_LEFT]:
+			self.facing = Facing.LEFT
+			self.setCurrentCycle(Facing.LEFT)
+			self.playAnimation()
+			self.dx = -6
+			self.state = States.WALK
+	def jumpBehavior(self):
+			self.stateTimer = 50
+			self.dy = -6
+			self.state = States.JUMP
+
+
+
+
+# sheet 432x358
+# cell Anthony 144x179
+class Anthony(Character):
+	def __init__(self, thisScene):
+		super().__init__(thisScene, "sprites/anthony_sheet.png", 432, 358)
+		self.x = 200
+		self.y = 500
+		self.dy = 1
+		self.dx = 6
+		self.loadAnimation(432, 358, 144, 179) 	# divides the sprite sheet into pieces
+		self.generateAnimationCycles() 	#sets up each "cylce" into rows
+		self.setAnimationSpeed(10)	#sets a QTimer to 100ms
+		self.playAnimation()	#starts the QTimer
+
+		# super().__init__(thisScene, "filename.png", sheetX, sheetY)
+
+	def walkBehavior(self):
+		if self.game.keysDown[Keys.K_RIGHT]:
+			self.facing = Facing.RIGHT
+			self.setCurrentCycle(Facing.RIGHT)
+			self.playAnimation()
+			self.dx = 7
+			self.state = States.WALK
+		elif self.game.keysDown[Keys.K_LEFT]:
+			self.facing = Facing.LEFT
+			self.setCurrentCycle(Facing.LEFT)
+			self.playAnimation()
+			self.dx = -7
+			self.stateTimer = 40
+			self.state=States.WALK
+	def jumpBehavior(self):
+			self.stateTimer = 50
+			self.dy = -6
+			self.state = States.JUMP
+
+
+
+		
 
 
 
