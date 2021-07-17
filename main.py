@@ -235,7 +235,7 @@ class Sean(Character):
 		super().__init__(game, "sprites/sean_sheet.png", 250, 100)
 		self.posX = 75	
 		self.posY = 100
-		self.loadAnimation(250, 100, 50, 50) 	# divides the sprite sheet into pieces
+		self.loadAnimation(500, 200, 100, 100) 	# divides the sprite sheet into pieces
 		self.setAnimationSpeed(10)	#sets a QTimer to 100ms
 		self.playAnimation()	#starts the QTimer
 		self.game = game
