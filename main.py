@@ -396,7 +396,7 @@ class Game:
 			for enemy in self.spaceship.enemies:
 				if enemy.rect.colliderect(self.main):
 					print("You died!")
-					self.done()
+					done = True
        
 			pygame.display.flip()
 
