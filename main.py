@@ -78,11 +78,11 @@ class Spaceship(Spritesheet):
 		temp = random.randint(0,2)
 		newEnemy = 0
 		if temp == 0:
-			newEnemy = Enemy(self.game, self.x, self.y)
+			newEnemy = Enemy(self.game, self.posX, self.posY)
 		elif temp==1:
-			newEnemy = GroundEnemy(self.game, self.x, self.y)
+			newEnemy = GroundEnemy(self.game, self.posX, self.posY)
 		elif temp ==2:
-			newEnemy = FlyingEnemy(self.game, self.x, self.y)
+			newEnemy = FlyingEnemy(self.game, self.posX, self.posY)
 		self.enemies.append(newEnemy)
 
 # Abstract base class - a base class we intend to inherit in another class
