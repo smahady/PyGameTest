@@ -30,21 +30,21 @@ class Keys:
 
 
 class Camera():
-	def __init__(self, thisScene):
-		self.scene = thisScene
+	def __init__(self, game):
+		self.scene = game
 
 	def follow(self, sprite):
 		self.sprite = sprite
 
 	def update(self):
 		if self.sprite.drawX < 250:
-			if self.sprite.x < 300:
-				self.sprite.x = 300
+			if self.sprite.posX < 300:
+				self.sprite.posX = 300
 			else:
 				self.scene.offsetX -= 6
 		if self.sprite.drawX > (350):
-			if self.sprite.x > (26*120):
-				self.sprite.x = (26*120)
+			if self.sprite.posX > (26*120):
+				self.sprite.posX = (26*120)
 			else:
 				self.scene.offsetX += 6
 
@@ -72,15 +72,7 @@ class Spaceship(Spritesheet):
 		#	enemy.update(self.scene.offsetX, self.scene.offsetY)
 
 	def enemySpawn(self):
-		temp = random.randint(0,2)
-		newEnemy = 0
-		if temp == 0:
-			newEnemy = Enemy(self.scene, self.x, self.y)
-		elif temp==1:
-			newEnemy = GroundEnemy(self.scene, self.x, self.y)
-		elif temp ==2:
-			newEnemy = FlyingEnemy(self.scene, self.x, self.y)
-		self.enemies.append(newEnemy)
+		pass
 
 
 
@@ -178,7 +170,7 @@ class Game:
 		# Setup the clock for a decent framerate
 		self.clock = pygame.time.Clock()
 
-		self.screen = pygame.display.set_mode((550, 550))
+		self.screen = pygame.display.set_mode((600, 600))
 
 		self.camera = Camera(self)
 
@@ -221,7 +213,6 @@ class Game:
 
 	# check events
 	def keyPressEvent(self, keys):
-		print ("key down")
 		if keys[pygame.K_LEFT]:
 			self.keysDown[Keys.K_LEFT] = True
 		else:
@@ -260,13 +251,18 @@ class Game:
 			self.bg3.draw(self.offsetX, self.offsetY)
 
 
-			self.sprites.draw(self.screen)
+
 
 
 
 
 			for sprite in self.sprites:
 				sprite.update()
+
+			self.camera.update()
+
+
+			self.sprites.draw(self.screen)
        
 			pygame.display.flip()
 

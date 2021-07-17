@@ -31,6 +31,7 @@ class Spritesheet(pygame.sprite.Sprite):
 			self.yLength = len(imageFile[0])
 			self.width = xSize * self.xLength
 			self.height = ySize * self.yLength 
+			self.rect = pygame.Rect(0,0,self.width,self.height)
 			self.src = pygame.Surface((self.width, self.height), pygame.SRCALPHA)
 			
 			for ix in range(0, self.xLength):
@@ -90,9 +91,12 @@ class Spritesheet(pygame.sprite.Sprite):
 		self.posX += self.dx
 		self.posY += self.dy
 
+		self.drawX = self.posX - offsetX
+		self.drawY = self.posY - offsetY
+
 
 		
-		self.rect.center = (self.posX, self.posY)
+		self.rect.center = (self.drawX, self.drawY)
 
 
 
