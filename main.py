@@ -70,12 +70,113 @@ class Spaceship(Spritesheet):
 			self.timer = 60
 			self.enemySpawn()
 
-		#for enemy in self.enemies:
-		#	enemy.update(self.scene.offsetX, self.scene.offsetY)
+		for enemy in self.enemies:
+			enemy.update(self.scene.offsetX, self.scene.offsetY)
 
 	def enemySpawn(self):
-		pass
+		temp = random.randint(0,2)
+		newEnemy = 0
+		if temp == 0:
+			newEnemy = Enemy(self.scene, self.x, self.y)
+		elif temp==1:
+			newEnemy = GroundEnemy(self.scene, self.x, self.y)
+		elif temp ==2:
+			newEnemy = FlyingEnemy(self.scene, self.x, self.y)
+		self.enemies.append(newEnemy)
 
+# Abstract base class - a base class we intend to inherit in another class
+class BaseEnemy(Sprite):
+	def __init__(self, thisScene, file, width, height, x, y):
+		super().__init__(thisScene, file, width, height)
+		self.setBoundAction(Scene.DIE)
+		self.x = x
+		self.y = y
+		self.dy = 3
+		self.timer = 120
+	def update(self, offsetX, offsetY):
+		self.timer -= 1
+		if self.timer < 1:
+			self.makeDecision()
+		super().update(offsetX, offsetY)
+	def makeDecision(self):
+		pass	
+
+class Enemy(BaseEnemy):
+	def __init__(self, thisScene, x, y):
+		super().__init__(thisScene, "sprites/egg3.png", 128, 128, x, y)
+	def update(self, offsetX, offsetY):
+		super().update(offsetX, offsetY)
+	def makeDecision(self):
+		self.dy = 3
+		self.timer = 120				
+
+class GroundEnemy(BaseEnemy):
+	def __init__(self, thisScene, x, y):
+		super().__init__(thisScene, "sprites/snek.png", 100, 100, x, y)
+		self.state = States.FALLING
+	def update(self, offsetX, offsetY):
+		super().update(offsetX, offsetY)
+		if self.state == States.FALLING:
+			if self.scene.ground.collidesWith(self):
+				self.state = States.STAND
+				self.dy = 0	
+	def makeDecision(self):
+		self.stateTimer = 100
+		if self.state == States.STAND:
+			decision = random.randint(0,1)
+			if decision == 0:
+				self.dx = random.randint(-5, 5)
+			# if decision 1 run toward character
+			if decision ==1:
+				movementX = 0
+				movementY = 0
+
+				#find out if the main character is to the left of the enemy, if so move toward them - Kamille
+				if self.scene.main.x < self.x:
+					movementX = -1
+
+				# find out if the main character is to the right of the enemy, if so move toward them - Raphael
+				if self.scene.main.x > self.x:
+					movementX = 1
+				
+				# move at random speed 
+				self.dx = (random.randint(0,5) * movementX)				
+
+class FlyingEnemy(BaseEnemy):
+	def __init__(self, thisScene, x, y):
+		super().__init__(thisScene, "sprites/birb.png", 100, 73, x, y)
+	def update(self, offsetX, offsetY):
+		super().update(offsetX, offsetY)
+	def makeDecision(self):
+		self.timer = 100
+		decision = random.randint(0,1)	
+		# decision 1, fly after main character
+		if decision == 0:
+			self.dx = random.randint(-5, 5)
+			self.dy = random.randint(-5, 5)
+		if decision ==1:
+			movementX = 0
+			movementY = 0		
+
+			# find out if the main character is to the left of the enemy
+			if self.scene.main.x < self.x:
+				movementX = -1		
+
+			# find out if the main character is to the right of the enemy - Raphael
+			if self.scene.main.x > self.x:
+				movementX = 1
+
+			# find out if the main character is underneath the enemy (hint check y)	- sophie
+			if self.scene.main.y < self.y:
+				movementY = -1
+
+			# find out if the main character is above of the enemy - Kamille
+			if self.scene.main.y > self.y:
+				movementY = 1	
+
+			# move at random speed 
+			self.dx = (random.randint(0,5) * movementX)
+			self.dy = (random.randint(0,5) * movementY)
 
 
 class Character(Spritesheet):
