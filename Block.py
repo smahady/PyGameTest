@@ -15,9 +15,9 @@ class Block(Spritesheet):
 
 		# assume collision
 		collision = self.rect.colliderect(sprite)
-		print(collision)
+		#print(collision)
 		if collision:
-			print("collision?")
+			#print("collision?")
 			sprite.x, sprite.y = sprite.rect.center
 			self.x, self.y = self.rect.center
 
