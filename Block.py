@@ -15,6 +15,7 @@ class Block(Spritesheet):
 
 		# assume collision
 		collision = self.rect.colliderect(sprite)
+
 		#print(collision)
 		if collision:
 			#print("collision?")
@@ -67,15 +68,15 @@ class Block(Spritesheet):
 			#move the sprite back
 			if collision == True:
 				if self.isBelow and (bottom > spriteTop):
-					sprite.y = (sprite.y + (bottom - spriteTop))
+					sprite.posY = (sprite.posY + (bottom - spriteTop))
 				elif self.isAbove and (top < spriteBottom):
-					sprite.y = (sprite.y - (spriteBottom - top))
+					sprite.posY = (sprite.posY - (spriteBottom - top))
 					sprite.dy = 0				
 				elif self.isLeft and (left < spriteRight):
-					sprite.x = (sprite.x - (spriteRight - left))
+					sprite.x = (sprite.posX - (spriteRight - left))
 					sprite.dx = 0				
 				elif self.isRight and (right > spriteLeft):
-					sprite.x = (sprite.x + (right - spriteLeft))	
+					sprite.x = (sprite.posX + (right - spriteLeft))	
 					sprite.dx = 0						
 						
 

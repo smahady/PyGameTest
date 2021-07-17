@@ -168,11 +168,11 @@ class FlyingEnemy(BaseEnemy):
 				movementX = 1
 
 			# find out if the main character is underneath the enemy (hint check y)	- sophie
-			if self.game.main.y < self.posY:
+			if self.game.main.posY < self.posY:
 				movementY = -1
 
 			# find out if the main character is above of the enemy - Kamille
-			if self.game.main.y > self.posY:
+			if self.game.main.posY > self.posY:
 				movementY = 1	
 
 			# move at random speed 
@@ -330,6 +330,7 @@ class Johnny(Character):
 			self.facing = Facing.LEFT
 			self.setCurrentCycle(Facing.LEFT)
 			self.playAnimation()
+			
 			self.dx = -1
 			self.state = States.WALK
 	def jumpBehavior(self):
@@ -353,7 +354,7 @@ class Siqi(Character):
         self.dy=3
         print("Siqi")
         self.loadAnimation(495, 180, 123, 90)
-        self.setAnimationSpeed(30)	
+        self.setAnimationSpeed(300)	
         self.playAnimation()
 
     def walkBehavior(self):
@@ -361,17 +362,17 @@ class Siqi(Character):
         self.facing = Facing.RIGHT
         self.setCurrentCycle(Facing.RIGHT)
         self.playAnimation()
-        self.dx = 6
+        self.dx = 60
         self.state = States.WALK
       elif self.game.keysDown[Keys.K_LEFT]:
         self.facing = Facing.LEFT
         self.setCurrentCycle(Facing.LEFT)
         self.playAnimation()
-        self.dx = -6
+        self.dx = -60
         self.state=States.WALK
     def jumpBehavior(self):
       self.stateTimer = 50
-      self.dy = -5	
+      self.dy = -50
       self.state = States.JUMP
 
 
@@ -538,7 +539,7 @@ class Window(Tk):
 		self.main = "None"
 		super().__init__()
 		self.game = game
-		self.geometry('600x600')
+		self.geometry('400x400')
 
 
 		seanButton = Button(self, text="Sean", command=self.Sean)
@@ -554,7 +555,9 @@ class Window(Tk):
 		qingyunButton = Button(self, text="Qingyun", command=self.Qingyun)
 		qingyunButton.pack()	
 		lucasButton = Button(self, text="Lucas", command=self.Lucas)
-		lucasButton.pack()						
+		lucasButton.pack()	
+		johnnyButton = Button(self, text="Johnny", command=self.Johnny)
+		johnnyButton.pack()								
 		self.mainloop()
 
 	def Sean(self):
@@ -583,7 +586,11 @@ class Window(Tk):
 
 	def Lucas(self):
 		self.game.main = Lucas(self.game)
-		self.destroy()						
+		self.destroy()	
+
+	def Johnny(self):
+		self.game.main = Johnny(self.game)
+		self.destroy()					
 
 
 class Game:
@@ -601,9 +608,6 @@ class Game:
 		self.screen = pygame.display.set_mode((600, 600))
 
 		self.camera = Camera(self)
-
-		self.offsetX = 20
-		self.offsetY = 20
 
 		self.offsetX = 20
 		self.offsetY = 20
