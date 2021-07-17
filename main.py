@@ -270,7 +270,7 @@ class Game:
         
 				pygame.display.flip()
 
-				self.clock.tick(30)
+				#self.clock.tick(30)
 
 game = Game()
 game.run()
