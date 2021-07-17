@@ -36,8 +36,8 @@ class Camera():
 	def follow(self, sprite):
 		self.sprite = sprite
 
-	def update(self, offsetX, offsetY):
-		super().update(offsetX, offsetY)
+	def update(self):
+
 		if self.sprite.drawX < 250:
 			if self.sprite.posX < 300:
 				self.sprite.posX = 300
