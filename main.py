@@ -72,17 +72,17 @@ class Spaceship(Spritesheet):
 			self.enemySpawn()
 
 		for enemy in self.enemies:
-			enemy.update(self.scene.offsetX, self.scene.offsetY)
+			enemy.update(self.game.offsetX, self.game.offsetY)
 
 	def enemySpawn(self):
 		temp = random.randint(0,2)
 		newEnemy = 0
 		if temp == 0:
-			newEnemy = Enemy(self.scene, self.x, self.y)
+			newEnemy = Enemy(self.game, self.x, self.y)
 		elif temp==1:
-			newEnemy = GroundEnemy(self.scene, self.x, self.y)
+			newEnemy = GroundEnemy(self.game, self.x, self.y)
 		elif temp ==2:
-			newEnemy = FlyingEnemy(self.scene, self.x, self.y)
+			newEnemy = FlyingEnemy(self.game, self.x, self.y)
 		self.enemies.append(newEnemy)
 
 # Abstract base class - a base class we intend to inherit in another class
