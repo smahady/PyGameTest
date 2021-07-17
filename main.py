@@ -126,7 +126,7 @@ class GroundEnemy(BaseEnemy):
 		if self.state == States.STAND:
 			decision = random.randint(0,1)
 			if decision == 0:
-				self.dx = random.randint(-5, 5)
+				self.dx = random.randint(-2, 2)
 			# if decision 1 run toward character
 			if decision ==1:
 				movementX = 0
@@ -141,7 +141,7 @@ class GroundEnemy(BaseEnemy):
 					movementX = 1
 				
 				# move at random speed 
-				self.dx = (random.randint(0,5) * movementX)				
+				self.dx = (random.randint(0,2) * movementX)				
 
 class FlyingEnemy(BaseEnemy):
 	def __init__(self, thisScene, x, y):
@@ -153,8 +153,8 @@ class FlyingEnemy(BaseEnemy):
 		decision = random.randint(0,1)	
 		# decision 1, fly after main character
 		if decision == 0:
-			self.dx = random.randint(-5, 5)
-			self.dy = random.randint(-5, 5)
+			self.dx = random.randint(-3, 3)
+			self.dy = random.randint(-3, 3)
 		if decision ==1:
 			movementX = 0
 			movementY = 0		
@@ -176,8 +176,8 @@ class FlyingEnemy(BaseEnemy):
 				movementY = 1	
 
 			# move at random speed 
-			self.dx = (random.randint(0,5) * movementX)
-			self.dy = (random.randint(0,5) * movementY)
+			self.dx = (random.randint(0,3) * movementX)
+			self.dy = (random.randint(0,3) * movementY)
 
 
 class Character(Spritesheet):
