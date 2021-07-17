@@ -36,7 +36,8 @@ class Camera():
 	def follow(self, sprite):
 		self.sprite = sprite
 
-	def update(self):
+	def update(self, offsetX, offsetY):
+		super().update(offsetX, offsetY)
 		if self.sprite.drawX < 250:
 			if self.sprite.posX < 300:
 				self.sprite.posX = 300
@@ -57,8 +58,8 @@ class Spaceship(Spritesheet):
 		self.timer = 60
 		self.enemies = []
 
-	def update(self):
-
+	def update(self, offsetX, offsetY):
+		super().update(offsetX, offsetY)
 		if self.drawX < 0:
 			self.dx = 6
 		if self.drawX > 550:
