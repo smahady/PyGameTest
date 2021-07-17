@@ -279,7 +279,6 @@ class Justin(Character):
         self.dx = 2
         self.dy = 2
         self.loadAnimation(1024, 168, 128, 84)
-        self.generateAnimationCycles()
         self.setAnimationSpeed(30)
         self.playAnimation()
     def walkBehavior(self):
@@ -317,7 +316,6 @@ class Johnny(Character):
 		self.dy = 1
 		print("Johnny")
 		self.loadAnimation(715, 474, 143, 237)
-		self.generateAnimationCycles()
 		self.setAnimationSpeed(30)	
 		self.playAnimation()
 
@@ -355,7 +353,6 @@ class Siqi(Character):
         self.dy=3
         print("Siqi")
         self.loadAnimation(495, 180, 123, 90)
-        self.generateAnimationCycles()
         self.setAnimationSpeed(30)	
         self.playAnimation()
 
@@ -393,7 +390,6 @@ class Alex(Character):
 
 
         self.loadAnimation(162, 204, 54, 102)
-        self.generateAnimationCycles()
         self.setAnimationSpeed(30)
         self.playAnimation()
 
@@ -432,7 +428,6 @@ class Qingyun(Character):
         self.dx = 5
         self.dy = 5
         self.loadAnimation(630, 220, 126, 110)
-        self.generateAnimationCycles()
         self.setAnimationSpeed(30)
         self.playAnimation()
 
@@ -474,7 +469,6 @@ class Lucas(Character):
 		self.posX = 100
 		self.posY = 100
 		self.loadAnimation(992, 240, 165, 120)
-		self.generateAnimationCycles()
 		self.setAnimationSpeed(100)	
 		self.playAnimation()
 
@@ -512,8 +506,7 @@ class Anthony(Character):
 		self.posY = 500
 		self.dy = 1
 		self.dx = 6
-		self.loadAnimation(432, 358, 144, 179) 	# divides the sprite sheet into pieces
-		self.generateAnimationCycles() 	#sets up each "cylce" into rows
+		self.loadAnimation(432, 358, 144, 179) 	# divides the sprite
 		self.setAnimationSpeed(10)	#sets a QTimer to 100ms
 		self.playAnimation()	#starts the QTimer
 
@@ -552,6 +545,16 @@ class Window(Tk):
 		seanButton.pack()
 		anthonyButton = Button(self, text="Anthony", command=self.Anthony)
 		anthonyButton.pack()
+		alexButton = Button(self, text="Alex", command=self.Alex)
+		alexButton.pack()
+		justinButton = Button(self, text="Justin", command=self.Justin)
+		justinButton.pack()	
+		siqiButton = Button(self, text="Siqi", command=self.Siqi)
+		siqiButton.pack()	
+		qingyunButton = Button(self, text="Qingyun", command=self.Qingyun)
+		qingyunButton.pack()	
+		lucasButton = Button(self, text="Lucas", command=self.Lucas)
+		lucasButton.pack()						
 		self.mainloop()
 
 	def Sean(self):
