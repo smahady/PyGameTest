@@ -1,15 +1,15 @@
 import pygame
 
 class Background():
-	def __init__(self, screen, imageFile, width, height, scrollX = 0, scrollY = 0):
+	def __init__(self, game, imageFile, width, height, scrollX = 0, scrollY = 0):
 		self.image = pygame.image.load(imageFile)
-		self.screen = screen
+		self.screen = game.screen
 		self.width = width
 		self.height = height
 		self.scrollAmountX = scrollX
 		self.scrollAmountY = scrollY
-		self.cWidth = screen.get_width()
-		self.cHeight = screen.get_height()
+		self.cWidth = self.screen.get_width()
+		self.cHeight = self.screen.get_height()
 
 		self.image = pygame.transform.scale(self.image, (self.width, self.height))
 
