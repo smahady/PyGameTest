@@ -117,7 +117,7 @@ class GroundEnemy(BaseEnemy):
 	def update(self, offsetX, offsetY):
 		super().update(offsetX, offsetY)
 		if self.state == States.FALLING:
-			if self.scene.ground.collidesWith(self):
+			if self.game.ground.collidesWith(self):
 				self.state = States.STAND
 				self.dy = 0	
 	def makeDecision(self):
