@@ -245,29 +245,30 @@ class Game:
 					done = True
 
 
-				keys = pygame.key.get_pressed()  #checking pressed keys
-				self.keyPressEvent(keys)
+		keys = pygame.key.get_pressed()  #checking pressed keys
+		self.keyPressEvent(keys)
 
-				# Add this somewhere after the event pumping and before the display.flip()
-				pygame.draw.rect(self.screen, (0, 128, 255), pygame.Rect(30, 30, 60, 60))
+		# Add this somewhere after the event pumping and before the display.flip()
+		pygame.draw.rect(self.screen, (0, 128, 255), pygame.Rect(30, 30, 60, 60))
 
-				self.bg0.draw(self.offsetX, self.offsetY)
-				self.bg1.draw(self.offsetX, self.offsetY)
-				self.bg2.draw(self.offsetX, self.offsetY)
-				self.bg3.draw(self.offsetX, self.offsetY)
-
-
-				self.sprites.draw(self.screen)
+		self.bg0.draw(self.offsetX, self.offsetY)
+		self.bg1.draw(self.offsetX, self.offsetY)
+		self.bg2.draw(self.offsetX, self.offsetY)
+		self.bg3.draw(self.offsetX, self.offsetY)
 
 
+		self.sprites.draw(self.screen)
 
 
-				for sprite in self.sprites:
-					sprite.update()
+
+
+		for sprite in self.sprites:
+			sprite.update()
         
-				pygame.display.flip()
+		pygame.display.flip()
+		
 
-				#self.clock.tick(30)
+		self.clock.tick(120)
 
 game = Game()
 game.run()
