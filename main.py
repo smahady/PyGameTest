@@ -220,6 +220,7 @@ class Game:
 
 	# check events
 	def keyPressEvent(self, key):
+		print ("key down")
 		if key == pygame.K_LEFT:
 			self.keysDown[Keys.K_LEFT] = True
 		elif key == pygame.K_RIGHT:
@@ -229,6 +230,7 @@ class Game:
 
 	# lift keys not down
 	def keyReleaseEvent(self, key):
+		print("keyup")
 		if key == pygame.K_LEFT:
 			self.keysDown[Keys.K_LEFT] = False
 		elif key == pygame.K_RIGHT:
