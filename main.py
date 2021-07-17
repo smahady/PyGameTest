@@ -288,8 +288,8 @@ class Window(Tk):
 class Justin(Character):
     def __init__(self, thisScene):
         super().__init__(thisScene, "sprites/justin_sheet.png", 1024, 168)
-        self.x = 100
-        self.y = 100
+        self.posX = 100
+        self.posY = 100
         self.dx = 2
         self.dy = 2
         self.loadAnimation(1024, 168, 128, 84)
@@ -325,8 +325,8 @@ class Justin(Character):
 class Johnny(Character):
 	def __init__(self,thisScene):
 		super().__init__(thisScene,"sprites/johnny_sheet.png", 715, 474)#COPYRIGHT anthony: YEEET
-		self.x = 100
-		self.y = 100
+		self.posX = 100
+		self.posY = 100
 		self.dx = 1
 		self.dy = 1
 		print("Johnny")
@@ -363,8 +363,8 @@ class Johnny(Character):
 class Siqi(Character):
     def __init__(self,thisScene):
         super().__init__(thisScene, "sprites/siqi_sheet.png",495,180) 
-        self.x=-100
-        self.y=-150
+        self.posX=-100
+        self.posY=-150
         self.dx=2
         self.dy=3
         print("Siqi")
@@ -399,8 +399,8 @@ class Siqi(Character):
 class Alex(Character):
     def __init__(self,thisScene):
         super().__init__(thisScene, "sprites/alex_sheet.png", 162, 204)
-        self.x = 110
-        self.y = 90
+        self.posX = 110
+        self.posY = 90
         self.dx=2
         self.dy=3
         print("Alex")
@@ -441,8 +441,8 @@ class Alex(Character):
 class Qingyun(Character):
     def __init__(self, thisScene):
         super().__init__(thisScene, "sprites/qingyun_sheet.png", 630, 220)	#make sure to pass thisScene, the path to your image, and the size
-        self.x = 200
-        self.y = 50
+        self.posX = 200
+        self.posY = 50
         self.dx = 5
         self.dy = 5
         self.loadAnimation(630, 220, 126, 110)
@@ -485,8 +485,8 @@ class Qingyun(Character):
 class Lucas(Character):
 	def __init__(self,thisScene):
 		super().__init__(thisScene,"sprites/lucas_sheet.png", 992,240)
-		self.x = 100
-		self.y = 100
+		self.posX = 100
+		self.posY = 100
 		self.loadAnimation(992, 240, 165, 120)
 		self.generateAnimationCycles()
 		self.setAnimationSpeed(100)	
@@ -522,8 +522,8 @@ class Lucas(Character):
 class Anthony(Character):
 	def __init__(self, thisScene):
 		super().__init__(thisScene, "sprites/anthony_sheet.png", 432, 358)
-		self.x = 200
-		self.y = 500
+		self.posX = 200
+		self.posY = 500
 		self.dy = 1
 		self.dx = 6
 		self.loadAnimation(432, 358, 144, 179) 	# divides the sprite sheet into pieces
