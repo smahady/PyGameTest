@@ -4,6 +4,7 @@ from Spritesheet import Spritesheet
 from Ground import Ground
 from enum import Enum
 from tkinter import Tk, Button, Label
+import random
 
 class States(Enum):
 	FALLING = 0
