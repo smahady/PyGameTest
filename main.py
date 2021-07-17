@@ -89,8 +89,8 @@ class Spaceship(Spritesheet):
 class BaseEnemy(Spritesheet):
 	def __init__(self, thisScene, file, width, height, x, y):
 		super().__init__(thisScene, file, width, height)
-		self.x = x
-		self.y = y
+		self.posX = x
+		self.posY = y
 		self.dy = 3
 		self.timer = 120
 	def update(self, offsetX, offsetY):
@@ -132,11 +132,11 @@ class GroundEnemy(BaseEnemy):
 				movementY = 0
 
 				#find out if the main character is to the left of the enemy, if so move toward them - Kamille
-				if self.scene.main.x < self.x:
+				if self.scene.main.posX < self.posX:
 					movementX = -1
 
 				# find out if the main character is to the right of the enemy, if so move toward them - Raphael
-				if self.scene.main.x > self.x:
+				if self.scene.main.posX > self.posX:
 					movementX = 1
 				
 				# move at random speed 
@@ -159,19 +159,19 @@ class FlyingEnemy(BaseEnemy):
 			movementY = 0		
 
 			# find out if the main character is to the left of the enemy
-			if self.scene.main.x < self.x:
+			if self.game.main.posX < self.posX:
 				movementX = -1		
 
 			# find out if the main character is to the right of the enemy - Raphael
-			if self.scene.main.x > self.x:
+			if self.game.main.posX > self.posX:
 				movementX = 1
 
 			# find out if the main character is underneath the enemy (hint check y)	- sophie
-			if self.scene.main.y < self.y:
+			if self.game.main.y < self.posY:
 				movementY = -1
 
 			# find out if the main character is above of the enemy - Kamille
-			if self.scene.main.y > self.y:
+			if self.game.main.y > self.posY:
 				movementY = 1	
 
 			# move at random speed 
